@@ -11,19 +11,19 @@ namespace EventHub.API.Models
     [Required]
     [EmailAddress]
     [MaxLength(100)]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     [Required]
     [MaxLength(128)]
-    public string PasswordHash { get; set; }
+    public required string PasswordHash { get; set; }
 
     [Required]
     [MaxLength(50)]
-    public string FirstName { get; set; }
+    public required string FirstName { get; set; }
 
     [Required]
     [MaxLength(50)]
-    public string LastName { get; set; }
+    public required string LastName { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -32,7 +32,7 @@ namespace EventHub.API.Models
     public DateTime? UpdatedAt { get; set; }
 
     // Navigation Properties
-    public ICollection<Event> Events { get; set; }
-    public ICollection<Ticket> Tickets { get; set; }
+    public required ICollection<Event> Events { get; set; }
+    public required ICollection<Ticket> Tickets { get; set; }
   }
 }

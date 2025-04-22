@@ -10,7 +10,7 @@ namespace EventHub.API.Models
 
         [Required]
         [MaxLength(100)]  // e.g., "General Admission", "VIP"
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18, 2)")]  // Proper decimal precision for pricing
@@ -24,7 +24,7 @@ namespace EventHub.API.Models
         public Guid EventId { get; set; }
 
         [ForeignKey("EventId")]
-        public Event Event { get; set; }
+        public required Event Event { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -33,6 +33,6 @@ namespace EventHub.API.Models
         public DateTime? UpdatedAt { get; set; }
 
         // Navigation property
-        public ICollection<Ticket> Tickets { get; set; }
+        public required ICollection<Ticket> Tickets { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace EventHub.API.Models
         public Guid TicketTypeId { get; set; }
 
         [ForeignKey("TicketTypeId")]
-        public TicketType TicketType { get; set; }
+        public required TicketType TicketType { get; set; }
 
         [Required]
         public Guid AttendeeId { get; set; }
 
         [ForeignKey("AttendeeId")]
-        public User Attendee { get; set; }
+        public required User Attendee { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime PurchaseDate { get; set; } = DateTime.UtcNow;
@@ -29,10 +29,10 @@ namespace EventHub.API.Models
 
         [Required]
         [MaxLength(500)]  // QR code data or meeting link
-        public string QRCodeData { get; set; }
+        public required string QRCodeData { get; set; }
 
         // Additional metadata (optional)
         [MaxLength(50)]
-        public string TransactionId { get; set; }  // For payment tracking
+        public required string TransactionId { get; set; }  // For payment tracking
     }
 }

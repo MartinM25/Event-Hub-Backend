@@ -12,11 +12,11 @@ namespace EventHub.API.Models
 
         [Required]
         [MaxLength(100)]
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
         [Required]
         [MaxLength(1000)]
-        public string Description { get; set; }
+        public required string Description { get; set; }
 
         [Required]
         public DateTime StartDateTime { get; set; }
@@ -28,16 +28,16 @@ namespace EventHub.API.Models
         public EventType Type { get; set; }
 
         [MaxLength(200)]
-        public string Location { get; set; } // For in-person events
+        public required string Location { get; set; } // For in-person events
 
         [MaxLength(500)]
-        public string OnlineMeetingLink { get; set; } // For online events
+        public required string OnlineMeetingLink { get; set; } // For online events
 
         [Required]
         public Guid OrganizerId { get; set; }
 
         [ForeignKey("OrganizerId")]
-        public User Organizer { get; set; }
+        public required User Organizer { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -45,6 +45,6 @@ namespace EventHub.API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? UpdatedAt { get; set; }
 
-        public ICollection<TicketType> TicketTypes { get; set; }
+        public required ICollection<TicketType> TicketTypes { get; set; }
     }
 }
